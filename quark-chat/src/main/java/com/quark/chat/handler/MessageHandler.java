@@ -67,8 +67,5 @@ public class MessageHandler extends SimpleChannelInboundHandler<TextWebSocketFra
         manager.broadMessage(QuarkChatProtocol.buildSysUserInfo(manager.getUsers()));
     }
 
-    @Override
-    protected void messageReceived(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
 
-    }
 }
