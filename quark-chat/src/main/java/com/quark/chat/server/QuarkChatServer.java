@@ -25,10 +25,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.net.InetSocketAddress;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -70,25 +67,21 @@ public class QuarkChatServer implements Server {
 
         defaultGroup = new DefaultEventLoopGroup(8, new ThreadFactory() {
             private AtomicInteger index = new AtomicInteger(0);
-
             @Override
             public Thread newThread(Runnable r) {
                 return new Thread(r, "DEFAULTGROUP" + index.incrementAndGet());
             }
-        });
-
+        }
+        );
         bossGroup = new NioEventLoopGroup(cpus, new ThreadFactory() {
             private AtomicInteger index = new AtomicInteger(0);
-
             @Override
             public Thread newThread(Runnable r) {
                 return new Thread(r, "BOSSGROUP" + index.incrementAndGet());
             }
         });
-
         workGroup = new NioEventLoopGroup(cpus * 10, new ThreadFactory() {
             private AtomicInteger index = new AtomicInteger(0);
-
             @Override
             public Thread newThread(Runnable r) {
                 return new Thread(r, "WORKGROUP" + index.incrementAndGet());

@@ -32,7 +32,7 @@ public class MessageHandler extends SimpleChannelInboundHandler<TextWebSocketFra
     @Autowired
     private ChannelManager manager;
 
-    @Override
+
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame frame) throws Exception {
         ChatUser chatUser = manager.getChatUser(ctx.channel());
         if (chatUser!=null&&chatUser.isAuth()){
@@ -65,5 +65,10 @@ public class MessageHandler extends SimpleChannelInboundHandler<TextWebSocketFra
         logger.error("connection error and close the channel:{}",cause);
         manager.removeChannel(ctx.channel());
         manager.broadMessage(QuarkChatProtocol.buildSysUserInfo(manager.getUsers()));
+    }
+
+    @Override
+    protected void messageReceived(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
+
     }
 }

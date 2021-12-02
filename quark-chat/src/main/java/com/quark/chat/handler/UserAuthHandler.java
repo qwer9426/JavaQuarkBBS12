@@ -45,7 +45,6 @@ public class UserAuthHandler extends SimpleChannelInboundHandler {
     @Autowired
     private ChannelManager manager;
 
-    @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
         //Http请求（第一次握手）
         if (msg instanceof FullHttpRequest){
@@ -161,5 +160,10 @@ public class UserAuthHandler extends SimpleChannelInboundHandler {
 
         //MessageHandler处理
         ctx.fireChannelRead(frame.retain());
+    }
+
+    @Override
+    protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
+
     }
 }
