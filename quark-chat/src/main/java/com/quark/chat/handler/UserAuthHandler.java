@@ -162,8 +162,8 @@ public class UserAuthHandler extends SimpleChannelInboundHandler {
         ctx.fireChannelRead(frame.retain());
     }
 
-    @Override
-    protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
-
-    }
+//    @Override
+//    protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
+//
+//    }
 }
