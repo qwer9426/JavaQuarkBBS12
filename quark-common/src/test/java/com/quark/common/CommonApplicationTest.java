@@ -4,8 +4,8 @@ import com.quark.common.dao.LabelDao;
 import com.quark.common.dao.NotificationDao;
 import com.quark.common.dao.PostsDao;
 import com.quark.common.dao.UserDao;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cache.annotation.EnableCaching;
@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 /**
  * Created by lhr on 17-7-30.
  */
-@RunWith(SpringRunner.class)
+
 @EnableCaching//缓存支持
 @SpringBootTest
 public class CommonApplicationTest {

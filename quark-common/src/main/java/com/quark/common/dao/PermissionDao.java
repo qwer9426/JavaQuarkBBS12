@@ -17,7 +17,7 @@ import java.util.List;
 public interface PermissionDao extends JpaRepository<Permission,Integer> {
 
 
-    Permission findOne(Integer integer);
+    Permission getOne(Integer integer);
 
     @Cacheable
     List<Permission> findAll();

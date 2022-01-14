@@ -32,7 +32,7 @@ public class MessageHandler extends SimpleChannelInboundHandler<TextWebSocketFra
     @Autowired
     private ChannelManager manager;
 
-
+    @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame frame) throws Exception {
         ChatUser chatUser = manager.getChatUser(ctx.channel());
         if (chatUser!=null&&chatUser.isAuth()){

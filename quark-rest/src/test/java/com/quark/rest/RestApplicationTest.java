@@ -62,5 +62,8 @@ public class RestApplicationTest {
 //            System.out.println(redisService.setHasValue(REDIS_USERID_KEY,5));
 //        postsDao.findAll();
     }
+public  static void qq(){
+
+}
 
 }
