@@ -36,7 +36,7 @@ public class PermissionServiceImpl extends BaseServiceImpl<PermissionDao, Permis
     @Override
     public List<Permission> loadUserPermission(Integer id) {
         List<Permission> perlist = new ArrayList<>();
-        AdminUser user = adminUserDao.findOne(id);
+        AdminUser user = adminUserDao.getOne(id);
         if (user.getRoles().size() > 0) {
             user.getRoles().stream()
                     .filter(role -> role.getPermissions().size() > 0)
@@ -50,7 +50,7 @@ public class PermissionServiceImpl extends BaseServiceImpl<PermissionDao, Permis
     @Override
     public List<Permission> loadUserPermissionByType(Integer id, Integer type) {
         List<Permission> perlist = new ArrayList<>();
-        AdminUser user = adminUserDao.findOne(id);
+        AdminUser user = adminUserDao.getOne(id);
         if (user.getRoles().size() > 0) {
             user.getRoles().stream()
                     .filter(role -> role.getPermissions().size() > 0)
@@ -78,8 +78,8 @@ public class PermissionServiceImpl extends BaseServiceImpl<PermissionDao, Permis
     @Override
     public Page<Permission> findByPage(int pageNo, int length) {
         Sort.Order order = new Sort.Order(Sort.Direction.ASC, "sort");
-        Sort sort = new Sort(order);
-        PageRequest pageRequest = new PageRequest(pageNo, length,sort);
+        Sort sort = Sort.by(order);
+        PageRequest pageRequest = PageRequest.of(pageNo, length,sort);
         Page<Permission> page = repository.findAll(pageRequest);
         return page;
     }

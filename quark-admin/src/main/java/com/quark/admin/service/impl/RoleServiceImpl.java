@@ -47,7 +47,7 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleDao, Role> implements R
 
     @Override
     public Page<Role> findByPage(int pageNo, int length) {
-        PageRequest pageRequest = new PageRequest(pageNo, length);
+        PageRequest pageRequest = PageRequest.of(pageNo, length);
         Page<Role> page = repository.findAll(pageRequest);
         return page;
     }

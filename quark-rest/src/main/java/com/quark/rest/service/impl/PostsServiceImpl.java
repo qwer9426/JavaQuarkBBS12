@@ -36,11 +36,12 @@ public class PostsServiceImpl extends BaseServiceImpl<PostsDao, Posts> implement
     @Autowired
     private UserDao userDao;
 
-    @Transactional
+
     @Override
+    @Transactional
     public void savePosts(Posts posts, Integer labelId, User user) {
         try {
-            Label label = labelDao.findOne(labelId);
+            Label label = labelDao.getOne(labelId);
 
             if (label == null) throw new ServiceProcessException("标签不存在!");
             //标签的帖子数量+1
@@ -67,10 +68,8 @@ public class PostsServiceImpl extends BaseServiceImpl<PostsDao, Posts> implement
         orders.add(new Sort.Order(Sort.Direction.DESC, "top"));
         orders.add(new Sort.Order(Sort.Direction.DESC, "id"));
 
-
-        Sort sort = new Sort(orders);
-        PageRequest pageable = new PageRequest(pageNo, length, sort);
-
+        Sort sort = Sort.by(orders);
+        PageRequest pageable = PageRequest.of(pageNo, length,sort);
         Specification<Posts> specification = new Specification<Posts>() {
             @Override
             public Predicate toPredicate(Root<Posts> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
@@ -93,8 +92,9 @@ public class PostsServiceImpl extends BaseServiceImpl<PostsDao, Posts> implement
 
     @Override
     public List<Posts> getPostsByUser(User user) {
-        Sort sort = new Sort(new Sort.Order(Sort.Direction.DESC, "initTime"));
-        Pageable pageable = new PageRequest(0, 10, sort);
+        Sort.Order order = new Sort.Order(Sort.Direction.DESC, "initTime");
+        Sort sort = Sort.by(order);
+        PageRequest pageable = PageRequest.of(0, 10,sort);
         Page<Posts> page = repository.findByUser(user, pageable);
         return page.getContent();
     }
@@ -104,8 +104,8 @@ public class PostsServiceImpl extends BaseServiceImpl<PostsDao, Posts> implement
         List<Sort.Order> orders = new ArrayList<>();
         orders.add(new Sort.Order(Sort.Direction.DESC, "top"));
         orders.add(new Sort.Order(Sort.Direction.DESC, "id"));
-        Sort sort = new Sort(orders);
-        Pageable pageable = new PageRequest(pageNo, lenght, sort);
+        Sort sort = Sort.by(orders);
+        Pageable pageable = PageRequest.of(pageNo, lenght, sort);
         Page<Posts> postss = repository.findByLabel(label, pageable);
         return postss;
     }

@@ -28,7 +28,7 @@ public class ChatServiceImpl extends BaseServiceImpl<UserDao,User> implements Ch
 
     @Override
     public boolean authUser(Integer id) {
-        User user = repository.findOne(id);
+        User user = repository.getOne(id);
         return user.getEnable() == 1;
     }
 

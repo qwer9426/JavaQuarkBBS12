@@ -23,7 +23,7 @@ public class ReplyServiceImpl extends BaseServiceImpl<ReplyDao,Reply> implements
 
     @Override
     public Page<Reply> findByPage(Reply reply, int pageNo, int length) {
-        PageRequest pageable = new PageRequest(pageNo, length);
+        PageRequest pageable = PageRequest.of(pageNo, length);
 
         Specification<Posts> specification = new Specification<Posts>(){
 

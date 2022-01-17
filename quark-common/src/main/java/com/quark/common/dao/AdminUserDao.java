@@ -18,7 +18,8 @@ import java.util.List;
 @CacheConfig(cacheNames = "adminusers")
 public interface AdminUserDao extends JpaRepository<AdminUser,Integer>,JpaSpecificationExecutor {
 
-    AdminUser findOne(Integer integer);
+    @Override
+    AdminUser getOne(Integer integer);
 
     @Cacheable
     List<AdminUser> findAll();

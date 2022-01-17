@@ -41,9 +41,8 @@ public class ReplyServiceImpl extends BaseServiceImpl<ReplyDao, Reply> implement
     @Override
     public Page<Reply> getReplyByPage(Integer postsId, int pageNo, int length) {
         Sort.Order order = new Sort.Order(Sort.Direction.ASC, "id");
-        Sort sort = new Sort(order);
-        PageRequest pageable = new PageRequest(pageNo, length, sort);
-
+        Sort sort = Sort.by(order);
+        PageRequest pageable = PageRequest.of(pageNo, length,sort);
         Specification<Reply> specification = new Specification<Reply>() {
 
             @Override
@@ -62,7 +61,7 @@ public class ReplyServiceImpl extends BaseServiceImpl<ReplyDao, Reply> implement
     @Override
     public void saveReply(Reply reply, Integer postsId, User user) {
         try {
-            Posts posts = postsDao.findOne(postsId);
+            Posts posts = postsDao.getOne(postsId);
 
             if (posts == null) throw new ServiceProcessException("帖子不存在!");
 

@@ -26,9 +26,9 @@ public class PostsServiceImpl extends BaseServiceImpl<PostsDao,Posts> implements
 
     @Override
     public Page<Posts> findByPage(Posts posts, int pageNo, int length) {
-        PageRequest pageable = new PageRequest(pageNo, length);
+        PageRequest pageable = PageRequest.of(pageNo, length);
         Sort.Order order = new Sort.Order(Sort.Direction.ASC, "id");
-        Sort sort = new Sort(order);
+        Sort sort =  Sort.by(order);
 
         Specification<Posts> specification = new Specification<Posts>() {
 

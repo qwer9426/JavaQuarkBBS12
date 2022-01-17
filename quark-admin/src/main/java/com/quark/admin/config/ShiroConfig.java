@@ -34,14 +34,11 @@ public class ShiroConfig {
     @Value("${spring.redis.host}")
     private String host;
 
+    @Value("${spring.redis.timeout}")
+    private int timeout;
     @Value("${spring.redis.port}")
     private int port;
 
-    @Value("${spring.redis.timeout}")
-    private int timeout;
-
-    @Value("${spring.redis.password}")
-    private String password;
 
     @Bean
     public MyShiroRealm getMyShiroRealm(){
@@ -155,10 +152,9 @@ public class ShiroConfig {
      */
     public RedisManager redisManager() {
         RedisManager redisManager = new RedisManager();
-        redisManager.setHost(host);
-        redisManager.setPort(port);
+        redisManager.setHost(host+":"+port);
 //        redisManager.setPassword(password);
-        redisManager.setExpire(1800);// 配置缓存过期时间
+        redisManager.setTimeout(1800);// 配置缓存过期时间
         redisManager.setTimeout(timeout);
         return redisManager;
     }

@@ -23,7 +23,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserDao,User> implements Us
 
     @Override
     public Page<User> findByPage(User user, int pageNo, int length) {
-        PageRequest pageable = new PageRequest(pageNo, length);
+        PageRequest pageable = PageRequest.of(pageNo, length);
 
         Specification<User> specification = new Specification<User>() {
             @Override

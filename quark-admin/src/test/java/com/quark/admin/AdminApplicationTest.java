@@ -46,7 +46,7 @@ public class AdminApplicationTest {
 
     @Test
     public void testDataSource() {
-       System.out.println(dao.findOne(3));
+       System.out.println(dao.getOne(3));
 
     }
 
