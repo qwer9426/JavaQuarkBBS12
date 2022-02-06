@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class ChatServiceImpl extends BaseServiceImpl<UserDao,User> implements ChatService{
@@ -28,8 +30,11 @@ public class ChatServiceImpl extends BaseServiceImpl<UserDao,User> implements Ch
 
     @Override
     public boolean authUser(Integer id) {
-        User user = repository.getOne(id);
-        return user.getEnable() == 1;
+        /**
+         * 注意这里的原方法是getone但是新版jpa会进行懒加载，所以进行了修改
+         */
+        Optional<User> user = repository.findById(id);
+        return user.get().getEnable() == 1;
     }
 
 

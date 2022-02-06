@@ -18,7 +18,7 @@
         <druid.version>1.2.8</druid.version>
         <fastjson.version>1.2.79</fastjson.version>
         <guava.version>31.0.1-jre</guava.version>
-        <shiro.version>1.4.1</shiro.version>
+        <shiro.version>1.2.6</shiro.version>
         <shiro.th.version>1.2.1</shiro.th.version>
         <shiro.redis.version>2.4.2.1-RELEASE</shiro.redis.version>
         <nekohtml.version>1.9.22</nekohtml.version>

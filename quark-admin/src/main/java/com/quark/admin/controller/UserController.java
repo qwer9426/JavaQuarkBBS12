@@ -1,6 +1,7 @@
 package com.quark.admin.controller;
 
 import com.quark.admin.service.UserService;
+import com.quark.admin.service.impl.UserServiceImpl;
 import com.quark.common.base.BaseController;
 import com.quark.common.dto.PageResult;
 import com.quark.common.dto.QuarkResult;
@@ -20,7 +21,7 @@ import java.util.List;
 public class UserController extends BaseController{
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @GetMapping
     public PageResult getAll(User user, String draw,
