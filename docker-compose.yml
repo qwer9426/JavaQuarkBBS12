@@ -1,0 +1,55 @@
+version: '3.5'
+services:
+  admin:
+    hostname: admin
+    image: admin:v1
+    volumes:
+      - /opt/admin/quark-admin-1.0-SNAPSHOT.jar:/admin.jar
+    ports:
+      - 8080:8080
+    labels:
+      "type": "1"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  chat:
+    hostname: chat
+    image: chat:v1
+    volumes:
+      - /opt/chat/quark-chat-1.0-SNAPSHOT.jar:/chat.jar
+    ports:
+      - 8083:8083
+    labels:
+      "type": "1"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  portal:
+    hostname: portal
+    image: portal:v1
+    volumes:
+      - /opt/portal/quark-portal-1.0-SNAPSHOT.jar:/portal.jar
+    ports:
+      - 8084:80
+    labels:
+      "type": "1"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  rest:
+    hostname: rest
+    image: rest:v1
+    volumes:
+      - /opt/rest/quark-rest-1.0-SNAPSHOT.jar:/rest.jar
+      - /opt/tmp:/opt/tmp
+    ports:
+      - 8081:8081
+    labels:
+      "type": "1"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
