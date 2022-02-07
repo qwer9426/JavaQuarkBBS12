@@ -21,6 +21,7 @@ import java.util.List;
  */
 @Api("通知消息接口")
 @RequestMapping("/notification")
+@CrossOrigin
 @RestController
 public class NotificationController extends BaseController {
 

@@ -13,13 +13,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.annotation.PreDestroy;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-
+@CrossOrigin
 @SpringBootApplication
 
 @EnableCaching//缓存支持

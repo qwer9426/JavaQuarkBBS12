@@ -6,7 +6,7 @@ import org.springframework.boot.web.server.ConfigurableWebServerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.jpa.repository.support.EntityManagerBeanDefinitionRegistrarPostProcessor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,7 +15,7 @@ import java.util.Properties;
 /**
  * Created by lhr on 17-7-31.
  */
-
+@CrossOrigin
 @SpringBootApplication
 @EnableCaching//缓存支持
 public class AdminApplication {
@@ -38,6 +38,6 @@ public class AdminApplication {
         SpringApplication app = new SpringApplication(AdminApplication.class);
         app.setDefaultProperties(properties);
         app.run(args);
-//        SpringApplication.run(CommonApplication.class, args);
+//        SpringApplication.run(AdminApplication.class, args);
     }
 }

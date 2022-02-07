@@ -16,6 +16,7 @@ import java.io.IOException;
  * @Author LHR
  * Create By 2017/8/26
  */
+@CrossOrigin
 @Api(value = "文件上传接口",description = "图片上传")
 @RestController
 @RequestMapping("/upload")

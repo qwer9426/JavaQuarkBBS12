@@ -2,6 +2,7 @@ package com.quark.porent;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,6 +12,7 @@ import java.util.Properties;
  * @Author LHR
  * Create By 2017/8/21
  */
+@CrossOrigin
 @SpringBootApplication
 public class PortalApplication {
 

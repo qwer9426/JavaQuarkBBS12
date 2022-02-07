@@ -1,4 +1,4 @@
-package com.quark.rest.config;
+package com.quark.porent.config;
 
 import org.springframework.context.annotation.Configuration;
 

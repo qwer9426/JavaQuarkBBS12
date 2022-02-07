@@ -24,6 +24,7 @@ import java.util.HashMap;
  * @Author LHR
  * Create By 2017/8/26
  */
+@CrossOrigin
 @Api(value = "帖子接口", description = "发布帖子,获取帖子")
 @RestController
 @RequestMapping("/posts")
