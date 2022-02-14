@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.quark.common.dao.AdminUserDao">
+    <select id="findAll" resultType="com.quark.common.entity.AdminUser">
+        select id , enable , password , username  from quark_adminuser
+    </select>
+    <select id="findByUsername" parameterType="string" resultType="com.quark.common.entity.AdminUser">
+        select id , enable , password, username  from quark_adminuser  where username=#{username}
+    </select>
+</mapper>

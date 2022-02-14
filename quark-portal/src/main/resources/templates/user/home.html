@@ -53,16 +53,12 @@
     var uid = $.getUrlParam('id');
     layui.use(['laytpl'],function () {
         var laytpl = layui.laytpl;
-
         $.get(quark_user_detail_api+uid,function (data) {
             var user = $("#user").html();
             laytpl(user).render(data,function (html) {
                 $("#users").html(html);
             })
-
         });
-
-
     })
 //    alert(uid)
 </script>

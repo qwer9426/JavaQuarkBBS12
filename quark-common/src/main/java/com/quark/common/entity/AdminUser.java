@@ -1,6 +1,7 @@
 package com.quark.common.entity;
 
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "quark_adminuser")
+@TableName(value = "quark_adminuser")
 public class AdminUser implements Serializable{
 
     @Id

@@ -2,6 +2,7 @@ package com.quark.admin;
 
 import com.quark.admin.service.*;
 import com.quark.common.dao.AdminUserDao;
+import com.quark.common.entity.AdminUser;
 import com.quark.common.entity.Posts;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,7 +47,7 @@ public class AdminApplicationTest {
 
     @Test
     public void testDataSource() {
-       System.out.println(dao.getOne(3));
+       //System.out.println(dao.getOne(3));
 
     }
 
@@ -54,13 +55,16 @@ public class AdminApplicationTest {
 
     @Test
     public void testRole(){
-//        AdminUser user1 = new AdminUser();
+        AdminUser user1 = new AdminUser();
+
 //        AdminUser user2 = new AdminUser();
 //        AdminUser user3 = new AdminUser();
 //        user1.setId(11);
 //        user2.setId(12);
 //        user3.setId(13);
-        adminUserService.saveAdminEnable(new Integer[]{11,12,13});
+//        adminUserService.saveAdminEnable(new Integer[]{11,12,13});
+        Page<AdminUser> byPage = adminUserService.findByPage(user1, 2, 10);
+        System.out.println(byPage);
     }
 
     @Test
